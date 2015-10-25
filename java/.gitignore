@@ -48,3 +48,6 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
+
+# Iconpack
+src/main/resources/icons/
