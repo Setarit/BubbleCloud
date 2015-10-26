@@ -1,69 +1,49 @@
 package com.setarit.bubblecloud.controller;
 
-import java.io.IOException;
+import com.setarit.bubblecloud.model.LocalPathWrapper;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.stage.Stage;
+import javafx.util.Callback;
 
-public class ConfigurationController {	
-	private Stage stage;
-	private BorderPane rootLayout;
+/**
+ * Controller for the ConfigurationPanel
+ * @author Setarit
+ *
+ */
+public class ConfigurationController {
 
-	public ConfigurationController(Stage primaryStage) {
-		this.stage = primaryStage;		
+	@FXML
+	private BorderPane authenticationRequiredErrorMessage;
+	@FXML
+	private TableView<LocalPathWrapper> syncPathTable;
+	@FXML
+	private TableColumn<LocalPathWrapper, Boolean> activatedColumn;
+	@FXML
+	private TableColumn<LocalPathWrapper, String> pathColumn;
+	
+	/**
+	 * Called automatically
+	 */
+	@FXML
+	private void initialize(){
+		pathColumn.setCellValueFactory(new Callback<CellDataFeatures<LocalPathWrapper, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<LocalPathWrapper, String> cellValue) {
+				return new SimpleStringProperty(cellValue.getValue().getPath().toString());
+			}
+		});
+		activatedColumn.setCellValueFactory(new Callback<CellDataFeatures<LocalPathWrapper, Boolean>, ObservableValue<Boolean>>() {
+			public ObservableValue<Boolean> call(CellDataFeatures<LocalPathWrapper, Boolean> cellValue) {
+				return cellValue.getValue().isActivated();
+			}
+		});
+		
+		authenticationRequiredErrorMessage.setVisible(false);
 	}
-
-	public void show(){
-		showWindow();
-		showConfigurationPanel();
-		showSetaritPanel();
-	}
-
-	private void showSetaritPanel() {
-		try {
-            // Load configuration panel
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ConfigurationController.class.getResource("../view/SetaritPanel.fxml"));
-            FlowPane setaritPanelRoot = (FlowPane) loader.load();            
-            
-            // Set person overview into the center of root layout.
-            rootLayout.setBottom(setaritPanelRoot);            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-	}
-
-	private void showConfigurationPanel() {
-		try {
-            // Load configuration panel
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ConfigurationController.class.getResource("../view/ConfigurationPanel.fxml"));
-            AnchorPane configurationPanelRoot = (AnchorPane) loader.load();
-
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(configurationPanelRoot);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-	}
-
-	private void showWindow() {
-		try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ConfigurationController.class.getResource("../view/WindowPanel.fxml"));
-            rootLayout = (BorderPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Scene scene = new Scene(rootLayout);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-	}
+	
 }

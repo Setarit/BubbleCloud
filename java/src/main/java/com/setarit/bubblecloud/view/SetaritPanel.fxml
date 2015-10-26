@@ -7,28 +7,31 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+	minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<ImageView fx:id="profilePicture" fitHeight="20.0" fitWidth="100.0"
+			pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@/icons/person213.png" />
+			</image>
+		</ImageView>
+		<Label fx:id="loginName" text="You are not logged in.">
+			<font>
+				<Font name="HattoriHanzo-Light" size="14.0" />
+			</font>
+		</Label>
+		<Hyperlink text="&gt; Log in" underline="true" fx:id="loginHyperlink">
+			<font>
+				<Font name="HattoriHanzo-Light" size="14.0" />
+			</font>
+		</Hyperlink>
+		<Hyperlink fx:id="myProfileHyperlink" text="&gt; My Profile"
+			underline="true">
+			<font>
+				<Font name="HattoriHanzo-Light" size="14.0" />
+			</font>
+		</Hyperlink>
+	</children>
 
-<FlowPane fx:id="loginHyperlink" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ImageView fx:id="profilePicture" fitHeight="20.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../resources/icons/person213.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="loginName" text="You are not logged in.">
-         <font>
-            <Font name="HattoriHanzo-Light" size="14.0" />
-         </font>
-      </Label>
-      <Hyperlink text="&gt; Log in" underline="true">
-         <font>
-            <Font name="HattoriHanzo-Light" size="14.0" />
-         </font>
-      </Hyperlink>
-      <Hyperlink fx:id="myProfileHyperlink" text="&gt; My Profile" underline="true">
-         <font>
-            <Font name="HattoriHanzo-Light" size="14.0" />
-         </font>
-      </Hyperlink>
-   </children>
-</FlowPane>
+</HBox>

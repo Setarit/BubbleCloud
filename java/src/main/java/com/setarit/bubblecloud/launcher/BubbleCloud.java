@@ -1,6 +1,7 @@
 package com.setarit.bubblecloud.launcher;
 
-import com.setarit.bubblecloud.controller.ConfigurationController;
+import com.setarit.bubblecloud.controller.StartupController;
+import com.setarit.bubblecloud.controller.ViewController;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -15,8 +16,8 @@ public class BubbleCloud extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("BubbleCloud - Setarit");
-		ConfigurationController configurationController = new ConfigurationController(primaryStage);
-		configurationController.show();
+		ViewController startupController = new StartupController(primaryStage);
+		startupController.show();
 	}	
 	
 }

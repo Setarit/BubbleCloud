@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="com.setarit.bubblecloud.controller.ConfigurationController" minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="14.0" layoutY="14.0" text="Select your cloud provider" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <font>
@@ -51,10 +51,10 @@
             <Font name="HattoriHanzo-Light" size="14.0" />
          </font>
       </Label>
-      <TableView layoutX="14.0" layoutY="158.0" prefHeight="379.0" prefWidth="772.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="158.0">
+      <TableView fx:id="syncPathTable" layoutX="14.0" layoutY="158.0" prefHeight="379.0" prefWidth="772.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="158.0">
         <columns>
-          <TableColumn editable="false" maxWidth="500.0" minWidth="50.0" prefWidth="-1.0" text="Activated" />
-          <TableColumn prefWidth="75.0" text="Path" />
+          <TableColumn fx:id="activatedColumn" editable="false" maxWidth="500.0" minWidth="50.0" prefWidth="-1.0" text="Activated" />
+          <TableColumn fx:id="pathColumn" prefWidth="75.0" text="Path" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
